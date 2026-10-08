@@ -1,0 +1,54 @@
+{
+  "title": "J-Novel Club",
+  "token": {
+    "file": "token.json",
+    "path": "id"
+  },
+  "config": {
+    "file": "config.json"
+  },
+  "auth": {
+    "type": "password",
+    "request": {
+      "url": "https://labs.j-novel.club/app/v2/auth/login?format=json",
+      "method": "POST",
+      "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      "body": "{\"login\":\"{cfg.email}\",\"password\":\"{cfg.password}\",\"slim\":true}"
+    },
+    "token_path": "id"
+  },
+  "browse": {
+    "format": "json",
+    "url": "https://labs.j-novel.club/app/v2/me/library?include=serie&format=json&limit={limit}&page={page}",
+    "method": "GET",
+    "headers": {
+      "Accept": "application/json",
+      "Authorization": "Bearer {token}"
+    },
+    "items": "books",
+    "fields": {
+      "title": "volume.title",
+      "author": "volume.shortTitle",
+      "id": "volume.id"
+    },
+    "page_size": 12
+  },
+  "download": {
+    "url": "{cfg.api_base}/app/v2/me/library/volume/{id}?include=serie&format=json",
+    "method": "GET",
+    "headers": {
+      "Accept": "application/json",
+      "Authorization": "Bearer {token}",
+      "X-Optimizer-Key": "{cfg.server_key}"
+    },
+    "url_path": "downloads.0.link",
+    "dest_dir": "/J-Novel Club",
+    "filename": "{title}.epub"
+  },
+  "description": "Download the EPUBs you own on J-Novel Club straight to the device.",
+  "author": "Diirge",
+  "version": "1.3.1"
+}
