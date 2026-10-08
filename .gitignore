@@ -1,0 +1,14 @@
+ Python build files
+__pycache__/
+*.pyc
+
+# Secrets: never commit these
+optimizer-password
+config.json
+token.json
+
+# Optimizer cache when run outside Docker
+epub-optimizer/cache/
+
+# Reference archives kept in the work folder
+*.zip
