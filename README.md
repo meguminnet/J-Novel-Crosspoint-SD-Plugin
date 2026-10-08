@@ -8,7 +8,7 @@ fetches volumes already in your library; it does not order books or buy coins.
 
 1. Open the device web page → **Settings** → the J-Novel Club card.
 2. Enter your J-Novel Club email and password.
-3. Optional: the URL of your EPUB optimizer server (see `epub-optimizer/`) and
+3. Optional: the URL of your EPUB optimizer server ([Matcha-Epub-Optimizer](https://github.com/meguminnet/Matcha-Epub-Optimizer)) and
    the **Optimizer password** it was started with. Leave the URL blank to
    download straight from J-Novel Club.
 4. Tap **Test** (it checks the J-Novel Club sign-in, and the optimizer password
@@ -48,7 +48,7 @@ server is what guarantees EPUB-only downloads.
 - After updating the plugin, open the web card once: it updates your saved
   settings for this version (the device can't download until it has). If you
   use a server and see a request for the optimizer password, add it and Save.
-- Using a server needs `epub-optimizer` from the same release or later: older
+- Using a server needs [Matcha-Epub-Optimizer](https://github.com/meguminnet/Matcha-Epub-Optimizer) from the same release or later: older
   servers don't answer the request the plugin now makes.
 - Your credentials and the optimizer password are stored in plain text on the
   SD card, so keep the card somewhere safe.
