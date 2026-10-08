@@ -35,6 +35,8 @@ CrossPoint.registerPlugin(async (container, api) => {
     'With an optimizer server, downloads go through it: it shrinks the EPUB and refuses ' +
     'files the reader cannot open. Its password is the one the server was started with ' +
     '(OPTIMIZER_PASSWORD). ' +
+    'The optimizer server\'s code and setup guide are at '  +
+    '<a href="https://github.com/meguminnet/Matcha-Epub-Optimizer" target="_blank" rel="noopener noreferrer">github.com/meguminnet/Matcha-Epub-Optimizer</a>. ' +
     'Credentials are stored in plain text on the SD card.</p>';
 
   const el = (id) => document.getElementById(id);
