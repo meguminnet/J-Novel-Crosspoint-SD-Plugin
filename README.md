@@ -4,6 +4,8 @@
 Download the EPUBs you own on J-Novel Club straight to the reader. This only
 fetches volumes already in your library; it does not order books or buy coins.
 
+This plugin has relied on https://gitlab.com/anpanator1/jnc-downloader and uses the same license.
+
 ## Set up (once, from a browser)
 
 1. Open the device web page → **Settings** → the J-Novel Club card.
