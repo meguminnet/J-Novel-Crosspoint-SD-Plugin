@@ -1,5 +1,5 @@
 
-# J-Novel Club
+# J-Novel Club Crosspoint Plug-In
 
 Download the EPUBs you own on J-Novel Club straight to the reader. This only
 fetches volumes already in your library; it does not order books or buy coins.
