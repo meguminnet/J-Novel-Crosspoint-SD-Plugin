@@ -81,6 +81,7 @@ CrossPoint.registerPlugin(async (container, api) => {
     '<div id="jn-lib-list"></div>' +
     '</div>';
 
+
   const el = (id) => document.getElementById(id);
   const status = (t) => { el('jn-status').textContent = t; };
   const libStatus = (t) => { el('jn-lib-status').textContent = t; };
