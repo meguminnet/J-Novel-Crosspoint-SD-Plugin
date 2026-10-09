@@ -344,14 +344,13 @@ test('device screen: downloading through the optimizer sends the key on the hop 
 });
 
 // The firmware's url_path is a plain dotted path, so direct downloads take the
-// first entry of `downloads`. device.json shows that entry's format as the row
-// subtitle so a PDF-first volume is recognisable before it is downloaded.
-test('device screen: each row shows the format the reader would download', async () => {
+// first entry of `downloads`. The row subtitle stays the short title (it carries
+// the volume number), so PDF-first volumes are not flagged on the reader.
+test('device screen: each row shows the short title (volume number) underneath', async () => {
   const page = await configured();
   const screen = await deviceScreen(page);
-  const formats = Object.fromEntries(screen.browse({ list: 0 }).items.map((i) => [i.id, i.author]));
-  assert.equal(formats.v1, 'EPUB');
-  assert.equal(formats.v3, 'PDF', 'PDF-first volume is flagged');
+  const [first] = screen.browse({ list: 0 }).items;
+  assert.equal(first.author, 'Ascendance of a Bookworm: Part 1 Volume 1');
 });
 
 test('device screen: through the optimizer a PDF-first volume still arrives as an EPUB', async () => {

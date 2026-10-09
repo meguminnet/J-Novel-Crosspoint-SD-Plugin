@@ -44,12 +44,10 @@ server checks that the file itself is a valid EPUB.
    title underneath. Press Confirm (or tap) to download a volume as an EPUB to
    `/J-Novel Club/` on the SD card.
 
-Under each title the reader shows the format of the file it will download:
-normally **EPUB**. If it says **PDF** (some manga), J-Novel Club lists the PDF
-first and the reader, which always takes the first file, would save a PDF under
-an `.epub` name that won't open. Skip those on the reader and use **Send** on
-the browser page instead (it picks the EPUB), or use the optimizer server,
-which delivers only valid EPUBs.
+The reader always downloads the first file J-Novel Club lists for a volume. For
+some manga that is a PDF, which would be saved under an `.epub` name and won't
+open. If that happens, use **Send** on the browser page instead (it picks the
+EPUB), or use the optimizer server, which delivers only valid EPUBs.
 
 Hidden series don't apply on the reader. The reader's list is always newest
 first and always shows everything; hiding, searching by series and

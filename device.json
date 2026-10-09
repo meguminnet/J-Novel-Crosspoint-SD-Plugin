@@ -31,7 +31,7 @@
     "items": "books",
     "fields": {
       "title": "volume.title",
-      "author": "downloads.0.type",
+      "author": "volume.shortTitle",
       "id": "volume.id"
     },
     "page_size": 10,
@@ -60,5 +60,5 @@
   },
   "description": "Your library, 10 volumes a page. Full library: web page, Settings.",
   "author": "Megu",
-  "version": "1.5.1"
+  "version": "1.5.2"
 }
