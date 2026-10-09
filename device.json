@@ -22,7 +22,7 @@
   },
   "browse": {
     "format": "json",
-    "url": "https://labs.j-novel.club/app/v2/me/library?include=serie&format=json&limit={limit}&page={page}",
+    "url": "https://labs.j-novel.club/app/v2/me/library?include=serie&format=json&skip={page}0&limit={limit}",
     "method": "GET",
     "headers": {
       "Accept": "application/json",
@@ -31,10 +31,20 @@
     "items": "books",
     "fields": {
       "title": "volume.title",
-      "author": "volume.shortTitle",
+      "author": "downloads.0.type",
       "id": "volume.id"
     },
-    "page_size": 12
+    "page_size": 10,
+    "lists": [
+      {
+        "title": "Latest 10",
+        "url": "https://labs.j-novel.club/app/v2/me/library?include=serie&format=json&skip=0&limit=10"
+      },
+      {
+        "title": "Older volumes",
+        "url": "https://labs.j-novel.club/app/v2/me/library?include=serie&format=json&skip={page}0&limit={limit}"
+      }
+    ]
   },
   "download": {
     "url": "{cfg.api_base}/app/v2/me/library/volume/{id}?include=serie&format=json",
@@ -48,7 +58,7 @@
     "dest_dir": "/J-Novel Club",
     "filename": "{title}.epub"
   },
-  "description": "Download the EPUBs you own on J-Novel Club straight to the device.",
-  "author": "Diirge",
-  "version": "1.3.1"
+  "description": "Your library, 10 volumes a page. Full library: web page, Settings.",
+  "author": "Megu",
+  "version": "1.5.1"
 }

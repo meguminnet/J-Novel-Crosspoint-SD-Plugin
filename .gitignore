@@ -12,3 +12,7 @@ epub-optimizer/cache/
 
 # Reference archives kept in the work folder
 *.zip
+
+# Local emulators (Crosspoint emulator, iOS/desktop simulator) with their firmware clones, builds and tests
+emulator/
+simulator/
