@@ -13,9 +13,11 @@ This plugin has relied on https://github.com/Anpanator/jnc-downloader and uses t
 3. Optional: the URL of your EPUB optimizer server ([Matcha-Epub-Optimizer](https://github.com/meguminnet/Matcha-Epub-Optimizer)) and
    the **Optimizer password** it was started with. Leave the URL blank to
    download straight from J-Novel Club.
-   **Use the optimizer server** turns the server on or off without clearing
-   its URL and password: untick it to download straight from J-Novel Club
-   (for example while the server is down), tick it to go back. It takes
+   **Use the optimizer server** is off by default, so entering a URL alone
+   does not route downloads through it: tick it to use the server. It turns
+   the server on or off without clearing its URL and password: untick it to
+   download straight from J-Novel Club (for example while the server is
+   down), tick it to go back. It takes
    effect right away, on the reader too, without pressing Save.
 4. Tap **Test** (it checks the J-Novel Club sign-in, and the optimizer password
    if you set a server), then **Save**.

@@ -44,7 +44,7 @@ CrossPoint.registerPlugin(async (container, api) => {
     '<div class="setting-row"><span class="setting-name">Optimizer password</span>' +
     '<span class="setting-control"><input type="password" id="jn-key" name="optimizer-password" autocomplete="new-password" data-lpignore="true" data-1p-ignore></span></div>' +
     '<div class="setting-row"><label class="setting-name" for="jn-use">Use the optimizer server</label>' +
-    '<span class="setting-control"><input type="checkbox" id="jn-use" checked></span></div>' +
+    '<span class="setting-control"><input type="checkbox" id="jn-use"></span></div>' +
     '<div class="setting-row">' +
     '<button type="button" class="btn-small btn-add" id="jn-save">Save</button> ' +
     '<button type="button" class="btn-small" id="jn-test">Test</button> ' +
@@ -288,7 +288,7 @@ CrossPoint.registerPlugin(async (container, api) => {
       el('jn-pass').value = '';
       el('jn-server').value = '';
       el('jn-key').value = '';
-      el('jn-use').checked = true;
+      el('jn-use').checked = false;
       clearBtn.style.display = 'none';
       token = null;
       tokenFor = '';

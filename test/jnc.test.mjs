@@ -27,7 +27,6 @@ async function boot({ jnc = new MockJnc(), sd = {} } = {}) {
   const device = new MockDevice(jnc);
   for (const [k, v] of Object.entries(sd)) device.sd.set(k, typeof v === 'string' ? v : JSON.stringify(v));
   const elements = Object.fromEntries(IDS.map((id) => [id, fakeElement(id)]));
-  elements['jn-use'].checked = true;
   const document = {
     getElementById(id) { assert.ok(elements[id], 'unexpected element lookup: ' + id); return elements[id]; },
   };
@@ -40,7 +39,13 @@ async function boot({ jnc = new MockJnc(), sd = {} } = {}) {
   });
   vm.runInContext(await readFile(new URL('plugin.js', root), 'utf8'), context, { filename: 'plugin.js' });
   assert.equal(typeof render, 'function');
-  await render({ innerHTML: '' }, device.api(PLUGIN_DIR));
+  // The checkbox starts as the card's HTML sets it.
+  let html = '';
+  const container = {
+    get innerHTML() { return html; },
+    set innerHTML(v) { html = v; elements['jn-use'].checked = /id="jn-use"[^>]*\bchecked\b/.test(v); },
+  };
+  await render(container, device.api(PLUGIN_DIR));
   const page = {
     device, jnc, el: elements,
     fill({ email = 'me@example.com', pass = 'hunter2', server = '', key = '', use = true } = {}) {
@@ -129,6 +134,21 @@ test('optimizer settings: key goes to the device only while the optimizer is on'
   assert.equal(cfg.api_base, 'https://labs.j-novel.club');
   assert.equal(cfg.server_key, '', 'the optimizer password must never go to J-Novel Club');
   assert.equal(cfg.optimizer_key, OPTIMIZER_KEY, 'but it stays saved for later');
+});
+
+test('the optimizer switch starts off, even after a server URL is typed', async () => {
+  const page = await boot();
+  assert.equal(page.el['jn-use'].checked, false);
+  page.el['jn-email'].value = 'me@example.com'; page.el['jn-pass'].value = 'hunter2';
+  page.el['jn-server'].value = OPTIMIZER; page.el['jn-key'].value = OPTIMIZER_KEY;
+  await page.click('jn-save');
+  const cfg = page.savedConfig();
+  assert.equal(cfg.use_server, 'off');
+  assert.equal(cfg.api_base, 'https://labs.j-novel.club');
+  assert.equal(cfg.server_key, '');
+  assert.equal(cfg.server, OPTIMIZER, 'the URL is still saved for when it is ticked');
+  await page.click('jn-clear');
+  assert.equal(page.el['jn-use'].checked, false, 'Clear resets the switch to off');
 });
 
 test('saving rejects bad input', async () => {
